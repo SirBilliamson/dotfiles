@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 main() {
 	# Ask for sudo
 	ask_for_sudo

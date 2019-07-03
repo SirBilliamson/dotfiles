@@ -3,7 +3,7 @@
 main() {
 	# Ask for sudo
 	ask_for_sudo
-		# Login to app store
+	# Login to app store
 	login_to_app_store
 	# Install xcode
 	install_xcode
@@ -118,3 +118,5 @@ function setup_vim() {
     fi
     success "vim successfully setup"
 }
+
+main "$@"

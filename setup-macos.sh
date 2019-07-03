@@ -179,18 +179,6 @@ function setup_tmux() {
             exit 1
         fi
     fi
-
-    substep "Installing all plugins"
-
-    # sourcing .tmux.conf is necessary for tpm
-    tmux source-file ~/.tmux.conf 2> /dev/null
-
-    if ~/.tmux/plugins/tpm/bin/./install_plugins &> /dev/null; then
-        substep "Plugins installations succeeded"
-    else
-        error "Plugins installations failed"
-        exit 1
-    fi
     success "tmux successfully setup"
 }
 

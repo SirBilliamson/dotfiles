@@ -11,8 +11,6 @@ main() {
     install_packages_with_brewfile
     # Changing default shell to Fish
     change_shell_to_fish
-    # Installing yarn packages
-    install_yarn_packages
     # Mackup restore for settings
     mackup_restore
     # Setting up Vim
@@ -110,32 +108,6 @@ function install_powerline {
     ./install.sh
     cd ..
     rm -rf fonts
-}
-
-function install_yarn_packages() {
-    # Installing typescript for YouCompleteMe and prettier for Neoformat to auto-format files
-    # json for auto-formatting of json responses in terminal
-    # vmd for previewing markdown files
-    yarn_packages=(prettier typescript json vmd create-react-app gatsby-cli netlify-cli)
-    info "Installing yarn packages \"${yarn_packages[*]}\""
-
-    yarn_list_outcome=$(yarn global list)
-    for package_to_install in "${yarn_packages[@]}"
-    do
-        if echo "$yarn_list_outcome" | \
-            grep --ignore-case "$package_to_install" &> /dev/null; then
-            substep "\"${package_to_install}\" already exists"
-        else
-            if yarn global add "$package_to_install"; then
-                substep "Package \"${package_to_install}\" installation succeeded"
-            else
-                error "Package \"${package_to_install}\" installation failed"
-                exit 1
-            fi
-        fi
-    done
-
-    success "yarn packages successfully installed"
 }
 
 function clone_dotfiles_repo() {

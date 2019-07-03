@@ -21,6 +21,11 @@ main() {
     setup_vim
     # Setting up tmux
     setup_tmux
+    # Install oh my fish
+    install_oh_my_fish
+    # Install powerline fonts
+    install_powerline
+
 }
 
 DOTFILES_REPO=~/Documents/GitHub/dotfiles
@@ -96,27 +101,17 @@ function change_shell_to_fish() {
     fi
 }
 
-function install_pip_packages() {
-    pip_packages=(powerline-status requests tmuxp virtualenv django mypy)
-    info "Installing pip packages \"${pip_packages[*]}\""
+function install_oh_my_fish {
+    curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+    omf install agnoster
+}
 
-    pip3_list_outcome=$(pip3 list)
-    for package_to_install in "${pip_packages[@]}"
-    do
-        if echo "$pip3_list_outcome" | \
-            grep --ignore-case "$package_to_install" &> /dev/null; then
-            substep "\"${package_to_install}\" already exists"
-        else
-            if pip3 install "$package_to_install"; then
-                substep "Package \"${package_to_install}\" installation succeeded"
-            else
-                error "Package \"${package_to_install}\" installation failed"
-                exit 1
-            fi
-        fi
-    done
-
-    success "pip packages successfully installed"
+function install_powerline {
+    git clone https://github.com/powerline/fonts.git --depth=1
+    cd fonts
+    ./install.sh
+    cd ..
+    rm -rf fonts
 }
 
 function install_yarn_packages() {

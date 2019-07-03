@@ -11,8 +11,6 @@ main() {
     install_packages_with_brewfile
     # Changing default shell to Fish
     change_shell_to_fish
-    # Installing pip packages so that setup_symlinks can setup the symlinks
-    install_pip_packages
     # Installing yarn packages
     install_yarn_packages
     # Mackup restore for settings

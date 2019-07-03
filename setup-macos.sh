@@ -23,7 +23,7 @@ main() {
     setup_tmux
 }
 
-DOTFILES_REPO=~/personal/dotfiles
+DOTFILES_REPO=~/Documents/GitHub/dotfiles
 
 function ask_for_sudo() {
     info "Prompting for sudo password"

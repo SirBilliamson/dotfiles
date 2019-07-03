@@ -1,4 +1,4 @@
-#!/usr/bin/ bash
+#!/bin/bash
 
 main() {
 	# Ask for sudo

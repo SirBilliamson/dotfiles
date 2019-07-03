@@ -10,7 +10,7 @@ main() {
     # install mas
     brew install mas
     # Login to App Store
-    mas signin --dialog
+    mas signin --dialog chrisott.mn@gmail.com
     # Installing all packages in Dotfiles repository's Brewfile
     install_packages_with_brewfile
     # Changing default shell to Fish
